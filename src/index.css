@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+:root {
+  --brand-navy: #1E4171;
+  --brand-blue: #198DE5;
+  --brand-teal: #3BD0CA;
+
+  --bg-main: #F7FAFC;
+  --bg-soft: #EEF4F8;
+  --surface: #FFFFFF;
+
+  --text-heading: #16365F;
+  --text-body: #61758A;
+  --border-soft: #E4ECF3;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-heading);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Sora", "Inter", sans-serif;
+  color: var(--text-heading);
+  letter-spacing: -0.02em;
+}
+
+.section-shell {
+  @apply px-6 py-24;
+}
+
+.container-main {
+  @apply mx-auto max-w-7xl;
+}
+
+.section-label {
+  @apply inline-flex items-center rounded-full px-5 py-2 text-sm font-medium tracking-wide;
+  border: 1px solid #d7ebe8;
+  background: #eef8f7;
+  color: var(--brand-navy);
+}
+
+.section-title {
+  @apply mt-6 text-5xl font-extrabold tracking-tight;
+  color: var(--text-heading);
+}
+
+.section-desc {
+  @apply mt-4 text-lg leading-8;
+  color: var(--text-body);
+}
+
+.card-premium {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+.btn-primary {
+  background: #0B2546;
+  color: white;
+  border-radius: 18px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(11, 37, 70, 0.15);
+}
+
+.btn-primary:hover {
+  background: #16365F;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(11, 37, 70, 0.25);
+}
+
+
+
+.btn-secondary {
+  border: 1.5px solid var(--brand-navy);
+  color: var(--brand-navy);
+  background: transparent;
+  border-radius: 18px;
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+.btn-secondary:hover {
+  background: white;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Tailwind global CSS */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
