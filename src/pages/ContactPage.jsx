@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import ScrollProgress from "../components/ScrollProgress"
@@ -17,6 +17,22 @@ import {
 import { Helmet } from "react-helmet-async"
 
 export default function ContactPage() {
+  const serviceOptions = [
+    "UI/UX Design",
+    "Website Development",
+    "App Development",
+    "Branding",
+    "Digital Marketing",
+  ]
+  const serviceDropdownRef = useRef(null)
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    service: "UI/UX Design",
+    details: "",
+  })
+
   const contactCards = [
     {
       icon: Phone,
@@ -30,8 +46,8 @@ export default function ContactPage() {
     {
       icon: Mail,
       title: "Email Us",
-      primary: "hello@nikaith.com",
-      secondary: "support@nikaith.com",
+      primary: "info@nikaith.com",
+      secondary: "nikhil@nikaith.com",
       accent: "from-violet-500/12 via-fuchsia-500/8 to-transparent",
       iconBg: "bg-violet-50",
       iconColor: "text-violet-600",
@@ -87,6 +103,62 @@ export default function ContactPage() {
   ]
 
   const [openFaq, setOpenFaq] = useState(0)
+  const [isServiceOpen, setIsServiceOpen] = useState(false)
+
+  useEffect(() => {
+    const handlePointerDown = (event) => {
+      if (
+        serviceDropdownRef.current &&
+        !serviceDropdownRef.current.contains(event.target)
+      ) {
+        setIsServiceOpen(false)
+      }
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIsServiceOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handlePointerDown)
+    document.addEventListener("keydown", handleKeyDown)
+
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown)
+      document.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [])
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setFormData((current) => ({
+      ...current,
+      [name]: value,
+    }))
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+    const subject = encodeURIComponent(
+      `New Inquiry from ${formData.fullName || "Website Visitor"}`
+    )
+
+    const body = encodeURIComponent(
+      [
+        `Full Name: ${formData.fullName}`,
+        `Email Address: ${formData.email}`,
+        `Phone Number: ${formData.phone}`,
+        `Service Required: ${formData.service}`,
+        "",
+        "Project Details:",
+        formData.details,
+      ].join("\n")
+    )
+
+    window.location.href = `mailto:info@nikaith.com?subject=${subject}&body=${body}`
+  }
 
   return (
     <>
@@ -233,7 +305,7 @@ export default function ContactPage() {
                   </p>
                 </div>
 
-                <form className="grid gap-5">
+                <form className="grid gap-5" onSubmit={handleSubmit}>
                   <div className="grid gap-5 md:grid-cols-2">
                     <div>
                       <label className="mb-2.5 block text-sm font-medium text-[#4F6480]">
@@ -241,8 +313,12 @@ export default function ContactPage() {
                       </label>
                       <input
                         type="text"
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleChange}
                         placeholder="Enter your name"
                         className="w-full rounded-2xl border border-[#0B2546]/10 bg-[#F8FBFD] px-4 py-3.5 text-[#0B2546] placeholder:text-[#8AA0B8] outline-none transition focus:border-[#21B8C6]/60 focus:bg-white"
+                        required
                       />
                     </div>
 
@@ -252,8 +328,12 @@ export default function ContactPage() {
                       </label>
                       <input
                         type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
                         placeholder="Enter your email"
                         className="w-full rounded-2xl border border-[#0B2546]/10 bg-[#F8FBFD] px-4 py-3.5 text-[#0B2546] placeholder:text-[#8AA0B8] outline-none transition focus:border-[#21B8C6]/60 focus:bg-white"
+                        required
                       />
                     </div>
                   </div>
@@ -265,6 +345,9 @@ export default function ContactPage() {
                       </label>
                       <input
                         type="text"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
                         placeholder="Enter your phone number"
                         className="w-full rounded-2xl border border-[#0B2546]/10 bg-[#F8FBFD] px-4 py-3.5 text-[#0B2546] placeholder:text-[#8AA0B8] outline-none transition focus:border-[#21B8C6]/60 focus:bg-white"
                       />
@@ -274,13 +357,62 @@ export default function ContactPage() {
                       <label className="mb-2.5 block text-sm font-medium text-[#4F6480]">
                         Service Required
                       </label>
-                      <select className="w-full rounded-2xl border border-[#0B2546]/10 bg-[#F8FBFD] px-4 py-3.5 text-[#0B2546] outline-none transition focus:border-[#21B8C6]/60 focus:bg-white">
-                        <option>UI/UX Design</option>
-                        <option>Website Development</option>
-                        <option>App Development</option>
-                        <option>Branding</option>
-                        <option>Digital Marketing</option>
-                      </select>
+                      <div ref={serviceDropdownRef} className="relative">
+                        <button
+                          type="button"
+                          onClick={() => setIsServiceOpen((current) => !current)}
+                          className={`flex w-full items-center justify-between rounded-2xl border bg-[#F8FBFD] px-4 py-3.5 text-left text-[#0B2546] outline-none transition ${
+                            isServiceOpen
+                              ? "border-[#21B8C6]/70 bg-white shadow-[0_14px_30px_rgba(33,184,198,0.08)]"
+                              : "border-[#0B2546]/10 hover:border-[#0B2546]/15"
+                          }`}
+                          aria-haspopup="listbox"
+                          aria-expanded={isServiceOpen}
+                        >
+                          <span className="font-medium">{formData.service}</span>
+
+                          <span
+                            className={`text-[#5B6F89] transition-transform duration-200 ${
+                              isServiceOpen ? "rotate-180 text-[#21B8C6]" : ""
+                            }`}
+                          >
+                            <ChevronDown size={18} />
+                          </span>
+                        </button>
+
+                        {isServiceOpen && (
+                          <div className="absolute left-0 right-0 top-[calc(100%+0.6rem)] z-20 overflow-hidden rounded-[22px] border border-[#DCE7F0] bg-white p-2 shadow-[0_24px_60px_rgba(15,23,42,0.14)]">
+                            <div className="space-y-1" role="listbox">
+                              {serviceOptions.map((option) => {
+                                const isActive = formData.service === option
+
+                                return (
+                                  <button
+                                    key={option}
+                                    type="button"
+                                    onClick={() => {
+                                      setFormData((current) => ({
+                                        ...current,
+                                        service: option,
+                                      }))
+                                      setIsServiceOpen(false)
+                                    }}
+                                    className={`flex w-full items-center rounded-2xl px-4 py-3 text-left text-sm font-medium transition ${
+                                      isActive
+                                        ? "bg-gradient-to-r from-[#3BD0CA]/14 to-[#1E4171]/10 text-[#16365F]"
+                                        : "text-[#4F6480] hover:bg-[#F5F9FC] hover:text-[#16365F]"
+                                    }`}
+                                    role="option"
+                                    aria-selected={isActive}
+                                  >
+                                    {option}
+                                  </button>
+                                )
+                              })}
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
 
@@ -290,8 +422,12 @@ export default function ContactPage() {
                     </label>
                     <textarea
                       rows="6"
+                      name="details"
+                      value={formData.details}
+                      onChange={handleChange}
                       placeholder="Tell us about your project, goals, timeline, or requirements..."
                       className="w-full rounded-2xl border border-[#0B2546]/10 bg-[#F8FBFD] px-4 py-3.5 text-[#0B2546] placeholder:text-[#8AA0B8] outline-none transition focus:border-[#21B8C6]/60 focus:bg-white"
+                      required
                     />
                   </div>
 

@@ -86,15 +86,15 @@ export default function Hero() {
       </div>
 
       {/* 3D Tech Data Grid Floor */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[70vh] w-full overflow-hidden opacity-30 mix-blend-multiply" style={{ perspective: "1000px" }}>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[52vh] w-full overflow-hidden opacity-[0.12] mix-blend-multiply lg:h-[70vh] lg:opacity-30" style={{ perspective: "1000px" }}>
         {/* Fading mask to blend grid into the mesh background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FCFDFF] via-transparent to-[#FCFDFF] z-10" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#FCFDFF] via-[#FCFDFF]/85 to-[#FCFDFF] lg:via-transparent" />
 
         {/* Animated Grid */}
         <div className="absolute left-[-50%] top-0 h-[200%] w-[200%] animate-[gridMove_10s_linear_infinite]"
           style={{
-            backgroundImage: "linear-gradient(to right, #3BD0CA 2px, transparent 2px), linear-gradient(to bottom, #1E4171 2px, transparent 2px)",
-            backgroundSize: "80px 80px",
+            backgroundImage: "linear-gradient(to right, rgba(59,208,202,0.32) 1px, transparent 1px), linear-gradient(to bottom, rgba(30,65,113,0.2) 1px, transparent 1px)",
+            backgroundSize: "56px 56px",
             transformOrigin: "center top",
             transform: "rotateX(75deg) translateY(0)"
           }}
@@ -106,28 +106,28 @@ export default function Hero() {
         initial={{ opacity: 0 }} 
         animate={{ opacity: 1 }} 
         transition={{ delay: 1.2, duration: 1 }}
-        className="pointer-events-none absolute inset-0 text-[10px] sm:text-[12px] z-10 overflow-hidden"
+        className="pointer-events-none absolute inset-0 z-10 overflow-hidden text-[10px] sm:text-[12px]"
       >
-        <div className="absolute max-lg:left-[2%] max-lg:top-[10%] lg:left-[20%] lg:top-[23%] animate-[float_6.5s_ease-in-out_infinite]">
-          <div className="highlight-1 rounded-full border border-white/30 bg-white/10 px-3 py-1.5 lg:px-5 lg:py-2 font-medium text-[#0B2546]/50 backdrop-blur-md">
+        <div className="absolute max-lg:left-[5%] max-lg:top-[9%] lg:left-[20%] lg:top-[23%] animate-[float_6.5s_ease-in-out_infinite]">
+          <div className="highlight-1 rounded-full border border-white/30 bg-white/10 px-3 py-1.5 font-medium text-[#0B2546]/50 backdrop-blur-md max-lg:scale-90 lg:px-5 lg:py-2">
             Product &amp; Thinking
           </div>
         </div>
 
-        <div className="absolute max-lg:left-[2%] max-lg:top-auto max-lg:bottom-[5%] lg:left-[14.5%] lg:top-[54%] animate-[float_6.8s_ease-in-out_infinite]">
-          <div className="highlight-2 rounded-full border border-white/30 bg-white/10 px-3 py-1.5 lg:px-5 lg:py-2 font-medium text-[#0B2546]/50 backdrop-blur-md">
+        <div className="absolute max-lg:left-[4%] max-lg:top-[55%] lg:left-[14.5%] lg:top-[54%] animate-[float_6.8s_ease-in-out_infinite]">
+          <div className="highlight-2 rounded-full border border-white/30 bg-white/10 px-3 py-1.5 font-medium text-[#0B2546]/50 backdrop-blur-md max-lg:origin-left max-lg:scale-90 lg:px-5 lg:py-2">
             Web &amp; App Builds
           </div>
         </div>
 
-        <div className="absolute max-lg:right-[2%] max-lg:top-[20%] lg:right-[15%] lg:top-[27%] animate-[float_7.2s_ease-in-out_infinite]">
-          <div className="highlight-3 rounded-full border border-white/30 bg-white/10 px-3 py-1.5 lg:px-5 lg:py-2 font-medium text-[#0B2546]/50 backdrop-blur-md">
+        <div className="absolute max-lg:right-[4%] max-lg:top-[12%] lg:right-[15%] lg:top-[27%] animate-[float_7.2s_ease-in-out_infinite]">
+          <div className="highlight-3 rounded-full border border-white/30 bg-white/10 px-3 py-1.5 font-medium text-[#0B2546]/50 backdrop-blur-md max-lg:origin-right max-lg:scale-90 lg:px-5 lg:py-2">
             Branding &amp; Growth
           </div>
         </div>
 
-        <div className="absolute max-lg:right-[2%] max-lg:top-auto max-lg:bottom-[12%] lg:right-[21%] lg:top-[79%] animate-[float_7.3s_ease-in-out_infinite]">
-          <div className="highlight-4 rounded-full border border-white/30 bg-white/10 px-3 py-1.5 lg:px-5 lg:py-2 font-medium text-[#0B2546]/50 backdrop-blur-md">
+        <div className="absolute max-lg:right-[4%] max-lg:top-[76%] lg:right-[21%] lg:top-[79%] animate-[float_7.3s_ease-in-out_infinite]">
+          <div className="highlight-4 rounded-full border border-white/30 bg-white/10 px-3 py-1.5 font-medium text-[#0B2546]/50 backdrop-blur-md max-lg:origin-right max-lg:scale-90 lg:px-5 lg:py-2">
             Design Systems
           </div>
         </div>
@@ -141,10 +141,10 @@ export default function Hero() {
       <motion.div
         initial="hidden"
         animate="show"
-        className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col justify-center items-center px-6 text-center"
+        className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-6 pb-14 pt-36 text-center sm:pt-32"
       >
         {/* Search Bar Eyebrow (Reveals Late) */}
-        <motion.div variants={lateVariants} className="mx-auto flex w-full max-w-[280px] sm:max-w-xs items-center gap-3 rounded-full border border-[#0B2546]/10 bg-white/95 px-5 py-2.5 text-sm text-[#536A86] shadow-[0_10px_24px_rgba(15,23,42,0.06)] backdrop-blur-md">
+        <motion.div variants={lateVariants} className="mx-auto flex w-full max-w-[280px] items-center gap-3 rounded-full border border-[#0B2546]/10 bg-white/95 px-5 py-2.5 text-sm text-[#536A86] shadow-[0_10px_24px_rgba(15,23,42,0.06)] backdrop-blur-md sm:max-w-xs">
           <Search size={16} className="text-[#3BD0CA]" />
           <span className="flex-1 text-left whitespace-nowrap overflow-hidden">
             <span className="opacity-70">Find </span>
@@ -154,10 +154,9 @@ export default function Hero() {
         </motion.div>
 
         {/* Heading (Reveals Early) */}
-        <motion.h1 variants={textVariants} className="relative mt-6 text-4xl font-extrabold leading-[0.98] tracking-[-0.04em] sm:text-5xl md:text-6xl lg:text-[66px]">
+        <motion.h1 variants={textVariants} className="relative mt-6 max-w-[360px] text-5xl font-extrabold leading-[0.94] tracking-[-0.05em] sm:mt-6 sm:max-w-none sm:text-5xl md:text-6xl lg:text-[66px]">
           <span className="absolute left-1/2 top-[45%] -z-10 h-[180px] w-[620px] max-w-full -translate-x-1/2 rounded-full bg-gradient-to-r from-[#3BD0CA]/10 via-[#7CEAE5]/16 to-[#1E4171]/8 blur-3xl" />
-          We Build
-          <br />
+          <span className="block">We Build</span>
 
           <span className="relative inline-block">
             <span className="absolute inset-x-0 bottom-2 top-2 -z-10 rounded-2xl bg-gradient-to-r from-[#3BD0CA]/18 via-[#7CEAE5]/20 to-[#1E4171]/8 blur-2xl" />
@@ -168,22 +167,22 @@ export default function Hero() {
             </span>
           </span>
 
-          <br />
-          That Grow Businesses
+          <span className="block">That Grow</span>
+          <span className="block">Businesses</span>
         </motion.h1>
 
         {/* Description (Reveals Early) */}
-        <motion.p variants={textVariants} className="mt-8 max-w-4xl text-lg leading-8 text-[#5B6F89] md:text-[18px]">
+        <motion.p variants={textVariants} className="mt-6 max-w-[360px] text-[15px] leading-8 text-[#5B6F89] sm:mt-8 sm:max-w-4xl sm:text-base md:text-[18px]">
           From UI/UX design and website development to mobile apps, branding,
           and digital marketing, we create product-driven experiences that help
           companies launch faster and scale smarter.
         </motion.p>
 
         {/* Buttons (Reveals Late) */}
-        <motion.div variants={lateVariants} className="mt-10 flex flex-wrap justify-center gap-5">
+        <motion.div variants={lateVariants} className="mt-8 flex w-full max-w-[320px] flex-col justify-center gap-4 sm:mt-10 sm:max-w-none sm:w-auto sm:flex-row sm:flex-wrap sm:gap-5">
           <Link
             to="/contact"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#3BD0CA] to-[#1E4171] px-8 py-4 font-semibold text-white shadow-[0_18px_40px_rgba(30,65,113,0.18)] transition-all hover:scale-[1.03] hover:shadow-[0_24px_60px_rgba(30,65,113,0.3)]"
+            className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#3BD0CA] to-[#1E4171] px-8 py-4 font-semibold text-white shadow-[0_18px_40px_rgba(30,65,113,0.18)] transition-all hover:scale-[1.03] hover:shadow-[0_24px_60px_rgba(30,65,113,0.3)]"
           >
             <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-150%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(150%)]">
               <div className="relative h-full w-8 bg-white/20" />
@@ -196,7 +195,7 @@ export default function Hero() {
 
           <Link
             to="/portfolio"
-            className="inline-flex items-center gap-2 rounded-full border border-[#0B2546]/12 bg-white/95 px-8 py-4 font-semibold text-[#16365F] shadow-[0_10px_24px_rgba(15,23,42,0.06)] transition hover:-translate-y-[1px] hover:bg-[#F4F8FC]"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-[#0B2546]/12 bg-white/95 px-8 py-4 font-semibold text-[#16365F] shadow-[0_10px_24px_rgba(15,23,42,0.06)] transition hover:-translate-y-[1px] hover:bg-[#F4F8FC]"
           >
             View Our Work
           </Link>

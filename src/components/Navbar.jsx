@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Menu, X, ArrowUpRight } from "lucide-react"
 import { Link, NavLink } from "react-router-dom"
-import logo from "../assets/logoc.png"
+import logo from "../assets/nikaithc.svg"
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -15,7 +15,10 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    // Removed body scroll lock to prevent width jumping from scrollbar disappearing
+    document.body.style.overflow = mobileOpen ? "hidden" : ""
+    return () => {
+      document.body.style.overflow = ""
+    }
   }, [mobileOpen])
 
   const navLinks = [
@@ -30,7 +33,7 @@ export default function Navbar() {
     <header className="fixed left-0 top-0 z-50 w-full">
       <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
         <div
-          className={`overflow-hidden border transition-all duration-300 ${
+          className={`overflow-hidden border transition-all duration-200 ${
             mobileOpen 
               ? "rounded-[28px] border-[#E6EEF6] bg-white shadow-xl" 
               : `rounded-[32px] border-[#E6EEF6] ${
@@ -40,13 +43,15 @@ export default function Navbar() {
                 }`
           }`}
         >
-          <div className="flex items-center justify-between px-5 py-3 sm:px-6">
+          <div className="flex items-center justify-between px-5 py-4 sm:px-6">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3">
+            <Link to="/" className="flex min-w-0 items-center gap-3">
               <img
                 src={logo}
                 alt="NIKAITH"
-                className="h-10 w-auto object-contain sm:h-11"
+                width="44"
+                height="44"
+                className="h-10 w-auto shrink-0 object-contain sm:h-11"
               />
             </Link>
 
@@ -92,7 +97,7 @@ export default function Navbar() {
             {/* Mobile Toggle */}
             <button
               onClick={() => setMobileOpen((prev) => !prev)}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#E3EDF5] bg-white text-[#16365F] transition hover:bg-[#F4F8FC] lg:hidden"
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#E3EDF5] bg-white text-[#16365F] transition hover:bg-[#F4F8FC] lg:hidden"
               aria-label="Toggle menu"
             >
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -101,11 +106,13 @@ export default function Navbar() {
 
           {/* Mobile Menu */}
           <div
-            className={`overflow-hidden transition-all duration-300 lg:hidden ${
-              mobileOpen ? "max-h-[520px] opacity-100" : "max-h-0 opacity-0"
+            className={`overflow-hidden transition-all duration-300 ease-out lg:hidden ${
+              mobileOpen
+                ? "max-h-[420px] opacity-100"
+                : "max-h-0 opacity-0"
             }`}
           >
-            <div className="border-t border-[#E6EEF6] bg-white px-4 pb-4 pt-3 sm:px-6">
+            <div className="border-t border-[#E6EEF6] bg-white px-5 pb-5 pt-3 sm:px-6">
               <nav className="flex flex-col gap-2">
                 {navLinks.map((item) => (
                   <NavLink

@@ -8,8 +8,7 @@ import {
   Phone,
 } from "lucide-react"
 import { Link } from "react-router-dom"
-
-import assets from "../assets/logow.png"
+import assets from "../assets/nikaithw.svg"
 
 export default function Footer() {
   const services = [

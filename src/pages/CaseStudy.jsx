@@ -10,37 +10,22 @@ const caseStudyVisuals = {
   "spotscape-property-finder": {
     hero: "/works/spotscape.jpg",
     screens: [
-      "/works/spot-card.jpg",
-      "/works/spotscape.jpg",
-      "/works/spot-card.jpg",
-      "/works/spotscape.jpg",
+      "/works/ssr.jpg",
+      "/works/ssp.jpg",
     ],
   },
   "nikaith-wallet": {
     hero: "/works/fintech.jpg",
     screens: [
-      "/works/fin-card.jpg",
-      "/works/fintech.jpg",
-      "/works/fin-card.jpg",
-      "/works/fintech.jpg",
+      "/works/fintech1.jpg",
+      "/works/fintech2.jpg",
     ],
   },
-  "restaurant-platform": {
-    hero: "/works/trionet.jpg",
+  "hospital-management-system": {
+    hero: "/works/saas.jpg",
     screens: [
-      "/works/trio-card.jpg",
-      "/works/srb-card.jpg",
-      "/works/hpe-card.jpg",
-      "/works/elmur-card.jpg",
-    ],
-  },
-  "car-rental-app": {
-    hero: "/works/branding-card.jpg",
-    screens: [
-      "/works/poster-card.jpg",
-      "/works/social-card.jpg",
-      "/works/branding-card.jpg",
-      "/works/hashruja-card.jpg",
+      "/works/saas1.jpg",
+      "/works/saas2.jpg",
     ],
   },
 }
@@ -561,7 +546,7 @@ export default function CaseStudy() {
         <section className="bg-white px-6 pb-24 md:px-10 lg:px-16">
           <div className="mx-auto max-w-4xl rounded-[32px] border border-[#E2EBF2]/90 bg-[#F7FAFD] p-8 text-center shadow-[0_14px_35px_rgba(22,54,95,0.06)] md:p-12">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#21B8C6]">
-              Let’s Build Something Strong
+              Let's Build Something Strong
             </p>
 
             <h3 className="mx-auto mt-4 max-w-3xl text-3xl font-bold leading-tight md:text-5xl">
@@ -591,3 +576,4 @@ export default function CaseStudy() {
     </>
   )
 }
+

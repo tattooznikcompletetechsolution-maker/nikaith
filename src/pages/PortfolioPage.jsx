@@ -53,45 +53,24 @@ const projects = [
     pills: ["Case Study", "Mobile App"],
   },
   {
-    slug: "restaurant-platform",
-    title: "Restaurant Management Platform",
+    slug: "hospital-management-system",
+    title: "Hospital Management System",
     type: "case-study",
     category: "SaaS",
     priority: 5,
-    image: "/works/fin-card.jpg",
-    desc: "An end-to-end restaurant management platform covering order flow, operations, inventory logic, and multi-role product UX.",
+    image: "/works/saas.jpg",
+    desc: "A structured SaaS platform designed to simplify patient records, appointments, department workflows, billing, and hospital operations through a clear multi-role product experience.",
     icon: Layers3,
     accent: "from-violet-500/10 via-fuchsia-500/5 to-transparent",
-    stats: ["Dashboard UX", "Operations Flow", "Multi-role"],
+    stats: ["Hospital SaaS", "Multi-role UX", "Operations Dashboard"],
     pills: ["Case Study", "SaaS Product"],
     details: {
       overview:
-        "A scalable management system for restaurants with operational clarity across multiple user roles.",
+        "A scalable hospital management system created to bring appointments, records, billing, and operational coordination into one structured digital product.",
       challenge:
-        "Balancing speed, control, and simplicity across complex workflows.",
+        "Balancing speed, clarity, and control across complex hospital workflows involving staff, patients, departments, and administration.",
       solution:
-        "Designed modular dashboards, clean task flows, and a role-based experience architecture.",
-    },
-  },
-  {
-    slug: "car-rental-app",
-    title: "Car Rental App",
-    type: "case-study",
-    category: "Mobile",
-    priority: 5,
-    image: "/works/fin-card.jpg",
-    desc: "A mobile-first rental experience designed for vehicle discovery, booking clarity, and frictionless reservation flows.",
-    icon: Smartphone,
-    accent: "from-emerald-500/10 via-teal-500/5 to-transparent",
-    stats: ["Mobile UX", "Booking Flow", "User Journey"],
-    pills: ["Case Study", "Mobile App"],
-    details: {
-      overview:
-        "A sleek booking experience for modern vehicle rental services.",
-      challenge:
-        "Reducing friction in search, comparison, and booking confirmation flows.",
-      solution:
-        "Created an intuitive mobile journey with simplified selection and strong conversion intent.",
+        "Designed modular dashboards, cleaner department flows, and a role-based product architecture that supports daily hospital operations with less friction.",
     },
   },
   {
@@ -101,10 +80,10 @@ const projects = [
     category: "Web",
     priority: 1,
     image: "/works/trio-card.jpg",
-    desc: "A complete networking accessories brand website for B2B and B2C audiences, built in React with a focus on product visibility and responsive structure.",
+    desc: "A React-based networking accessories website for B2B & B2C, focused on product visibility and responsiveness.",
     icon: Globe,
     accent: "from-blue-500/10 via-cyan-500/5 to-transparent",
-    stats: ["Networking Brand", "B2B & B2C", "React Development"],
+    stats: ["Networking Brand", "B2B & B2C"],
     pills: ["Live Website", "React"],
   },
   {
@@ -169,7 +148,7 @@ const projects = [
     desc: "Logo design, brand identity systems, and visual direction work created for different businesses and campaigns.",
     icon: LayoutDashboard,
     accent: "from-pink-500/10 via-rose-500/5 to-transparent",
-    stats: ["Logo Design", "Brand Identity", "Visual Systems"],
+    stats: ["Brand Identity", "Visual Systems"],
     pills: ["Branding", "Logos", "Identity"],
     galleryAspect: "aspect-square",
     layoutType: "logo-grid",
@@ -195,13 +174,19 @@ const projects = [
     desc: "Social media posts, ad creatives, banners, and campaign visuals built for engagement, promotion, and brand consistency.",
     icon: Globe,
     accent: "from-cyan-500/10 via-sky-500/5 to-transparent",
-    stats: ["Social Posts", "Ad Creatives", "Campaign Visuals"],
+    stats: ["Social Posts", "Ad Creatives"],
     pills: ["Instagram", "Ads", "Marketing"],
     galleryAspect: "aspect-[4/5]",
     galleryImages: [
-      "/projects/social/social2.jpg",
-      "/projects/social/social2.jpg",
-      "/projects/social/social2.jpg",
+      "/projects/social/p1.jpg",
+      "/projects/social/p8.jpg",
+      "/projects/social/p2.jpg",
+      "/projects/social/p3.jpg",
+      "/projects/social/p4.jpg",
+      "/projects/social/p5.jpg",
+      "/projects/social/p6.jpg",
+      "/projects/social/p7.jpg",
+      
     ],
   },
   {
@@ -219,6 +204,8 @@ const projects = [
     galleryAspect: "aspect-[3/4]",
     galleryImages: [
       "/projects/flyer/flyer1.jpg",
+      "/projects/social/p10.jpg",
+      "/projects/social/p9.jpg",
       "/projects/flyer/flyer2.jpg",
       "/projects/flyer/flyer3.jpg",
       "/projects/flyer/flyer4.jpg",
@@ -386,35 +373,15 @@ function ProjectCard({ project, onOpenGallery }) {
             : "Live Website"}
         </p>
 
-        <h3 className="mt-2 text-2xl font-bold leading-tight text-[#16365F]">
+        <h3 className="mt-2 min-h-[64px] text-2xl font-bold leading-tight text-[#16365F]">
           {project.title}
         </h3>
 
-        <p className="mt-4 text-sm leading-7 text-[#5B6F89]">{project.desc}</p>
+        <p className="mt-4 min-h-[112px] text-sm leading-7 text-[#5B6F89]">
+          {project.desc}
+        </p>
 
-        <div className="mt-5 flex flex-wrap gap-2">
-          {project.stats.map((stat) => (
-            <span
-              key={stat}
-              className="rounded-full border border-[#E2EBF2] bg-[#F7FAFC]/90 px-3 py-2 text-xs font-medium text-[#1E4171] shadow-sm transition duration-300 group-hover:bg-white"
-            >
-              {stat}
-            </span>
-          ))}
-        </div>
-
-        <div className="mt-3 flex flex-wrap gap-2">
-          {project.pills?.map((pill) => (
-            <span
-              key={pill}
-              className="rounded-full border border-[#DDE7F0] bg-white px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#5C7190]"
-            >
-              {pill}
-            </span>
-          ))}
-        </div>
-
-        <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#16365F] transition duration-300 group-hover:text-[#21B8C6] md:mt-auto">
+        <div className="mt-6 inline-flex items-center gap-2 border-t border-[#E8EEF5] pt-5 text-sm font-semibold text-[#16365F] transition duration-300 group-hover:text-[#21B8C6] md:mt-auto">
           {project.type === "case-study"
             ? `View ${project.title} Case Study`
             : project.type === "gallery"
@@ -687,7 +654,7 @@ const filteredProjects = useMemo(() => {
           <div className="pointer-events-none absolute bottom-0 right-0 h-[220px] w-[220px] rounded-full bg-[#1E4171]/6 blur-3xl" />
           <div className="relative mx-auto max-w-6xl rounded-[32px] border border-[#E2EBF2]/90 bg-[#F7FAFD] p-8 text-center shadow-[0_14px_35px_rgba(22,54,95,0.06)] md:p-12">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#21B8C6]">
-              Let’s Build Something Strong
+              Let's Build Something Strong
             </p>
 
             <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-bold leading-tight md:text-5xl">
@@ -727,3 +694,4 @@ const filteredProjects = useMemo(() => {
     </>
   )
 }
+
